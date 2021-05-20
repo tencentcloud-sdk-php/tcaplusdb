@@ -18,32 +18,19 @@ namespace TencentCloud\Tcaplusdb\V20190823\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * CreateBackup返回参数结构体
+ * MergeTablesData返回参数结构体
  *
- * @method array getTaskIds() 获取创建的备份任务ID列表
-注意：此字段可能返回 null，表示取不到有效值。
- * @method void setTaskIds(array $TaskIds) 设置创建的备份任务ID列表
-注意：此字段可能返回 null，表示取不到有效值。
- * @method array getApplicationIds() 获取创建的备份申请ID列表
-注意：此字段可能返回 null，表示取不到有效值。
- * @method void setApplicationIds(array $ApplicationIds) 设置创建的备份申请ID列表
-注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getResults() 获取合服结果集
+ * @method void setResults(array $Results) 设置合服结果集
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class CreateBackupResponse extends AbstractModel
+class MergeTablesDataResponse extends AbstractModel
 {
     /**
-     * @var array 创建的备份任务ID列表
-注意：此字段可能返回 null，表示取不到有效值。
+     * @var array 合服结果集
      */
-    public $TaskIds;
-
-    /**
-     * @var array 创建的备份申请ID列表
-注意：此字段可能返回 null，表示取不到有效值。
-     */
-    public $ApplicationIds;
+    public $Results;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -51,10 +38,7 @@ class CreateBackupResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param array $TaskIds 创建的备份任务ID列表
-注意：此字段可能返回 null，表示取不到有效值。
-     * @param array $ApplicationIds 创建的备份申请ID列表
-注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $Results 合服结果集
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -70,12 +54,13 @@ class CreateBackupResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("TaskIds",$param) and $param["TaskIds"] !== null) {
-            $this->TaskIds = $param["TaskIds"];
-        }
-
-        if (array_key_exists("ApplicationIds",$param) and $param["ApplicationIds"] !== null) {
-            $this->ApplicationIds = $param["ApplicationIds"];
+        if (array_key_exists("Results",$param) and $param["Results"] !== null) {
+            $this->Results = [];
+            foreach ($param["Results"] as $key => $value){
+                $obj = new MergeTableResult();
+                $obj->deserialize($value);
+                array_push($this->Results, $obj);
+            }
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {

@@ -18,32 +18,36 @@ namespace TencentCloud\Tcaplusdb\V20190823\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * CreateBackup返回参数结构体
+ * ModifyCensorship返回参数结构体
  *
- * @method array getTaskIds() 获取创建的备份任务ID列表
+ * @method string getClusterId() 获取集群id
+ * @method void setClusterId(string $ClusterId) 设置集群id
+ * @method array getUins() 获取已加入审批人的uin
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setTaskIds(array $TaskIds) 设置创建的备份任务ID列表
+ * @method void setUins(array $Uins) 设置已加入审批人的uin
 注意：此字段可能返回 null，表示取不到有效值。
- * @method array getApplicationIds() 获取创建的备份申请ID列表
-注意：此字段可能返回 null，表示取不到有效值。
- * @method void setApplicationIds(array $ApplicationIds) 设置创建的备份申请ID列表
-注意：此字段可能返回 null，表示取不到有效值。
+ * @method integer getCensorship() 获取集群是否开启审核 0-关闭 1-开启
+ * @method void setCensorship(integer $Censorship) 设置集群是否开启审核 0-关闭 1-开启
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class CreateBackupResponse extends AbstractModel
+class ModifyCensorshipResponse extends AbstractModel
 {
     /**
-     * @var array 创建的备份任务ID列表
-注意：此字段可能返回 null，表示取不到有效值。
+     * @var string 集群id
      */
-    public $TaskIds;
+    public $ClusterId;
 
     /**
-     * @var array 创建的备份申请ID列表
+     * @var array 已加入审批人的uin
 注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $ApplicationIds;
+    public $Uins;
+
+    /**
+     * @var integer 集群是否开启审核 0-关闭 1-开启
+     */
+    public $Censorship;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -51,10 +55,10 @@ class CreateBackupResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param array $TaskIds 创建的备份任务ID列表
+     * @param string $ClusterId 集群id
+     * @param array $Uins 已加入审批人的uin
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param array $ApplicationIds 创建的备份申请ID列表
-注意：此字段可能返回 null，表示取不到有效值。
+     * @param integer $Censorship 集群是否开启审核 0-关闭 1-开启
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -70,12 +74,16 @@ class CreateBackupResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("TaskIds",$param) and $param["TaskIds"] !== null) {
-            $this->TaskIds = $param["TaskIds"];
+        if (array_key_exists("ClusterId",$param) and $param["ClusterId"] !== null) {
+            $this->ClusterId = $param["ClusterId"];
         }
 
-        if (array_key_exists("ApplicationIds",$param) and $param["ApplicationIds"] !== null) {
-            $this->ApplicationIds = $param["ApplicationIds"];
+        if (array_key_exists("Uins",$param) and $param["Uins"] !== null) {
+            $this->Uins = $param["Uins"];
+        }
+
+        if (array_key_exists("Censorship",$param) and $param["Censorship"] !== null) {
+            $this->Censorship = $param["Censorship"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
